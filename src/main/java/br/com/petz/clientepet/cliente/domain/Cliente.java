@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import br.com.petz.clientepet.cliente.application.api.ClienteRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -47,19 +48,17 @@ public class Cliente {
 	private LocalDateTime datahoraDoCadastro;
 	private LocalDateTime dataHoraDaUltimaAlteracao;
 	
-	public Cliente(@NotBlank String nomeCompleto, @Email @NotBlank String email, @NotBlank String celular,
-			String telefone, Sexo sexo, @NotNull LocalDate dataNacimento, @CPF String cpf,
-			@NotNull Boolean aceitaTermos) {
+	public Cliente(ClienteRequest clienteRequest) {
 	
 		this.idCliente = UUID.randomUUID();
-		this.nomeCompleto = nomeCompleto;
-		this.email = email;
-		this.celular = celular;
-		this.telefone = telefone;
-		this.sexo = sexo;
-		this.dataNacimento = dataNacimento;
-		this.cpf = cpf;
-		this.aceitaTermos = aceitaTermos;
+		this.nomeCompleto = clienteRequest.getNomeCompleto();
+		this.email = clienteRequest.getEmail();
+		this.celular = clienteRequest.getCelular();
+		this.telefone = clienteRequest.getTelefone();
+		this.sexo = clienteRequest.getSexo();
+		this.dataNacimento = clienteRequest.getDataNacimento();
+		this.cpf = clienteRequest.getCpf();
+		this.aceitaTermos = clienteRequest.getAceitaTermos();
 		this.datahoraDoCadastro = LocalDateTime.now();
 	}
 	
