@@ -24,7 +24,10 @@ import lombok.NoArgsConstructor;
 public class Cliente {
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
+
+	
 	private UUID idCliente;
+	
 	@NotBlank
 	private String nomeCompleto;
 	@Email
@@ -47,8 +50,7 @@ public class Cliente {
 	public Cliente(@NotBlank String nomeCompleto, @Email @NotBlank String email, @NotBlank String celular,
 			String telefone, Sexo sexo, @NotNull LocalDate dataNacimento, @CPF String cpf,
 			@NotNull Boolean aceitaTermos) {
-		super();
-		
+	
 		this.idCliente = UUID.randomUUID();
 		this.nomeCompleto = nomeCompleto;
 		this.email = email;
